@@ -2,7 +2,31 @@
   "expo": {
     "name": "noovies",
     "slug": "noovies",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "android": {
+      "splash": {
+        "resizeMode": "cover",
+        "backgroundColor": "#25292e",
+        "dark": {
+          "resizeMode": "cover",
+          "backgroundColor": "#000000"
+        }
+      }
+    },
+    "ios": {
+      "splash": {
+        "resizeMode": "cover",
+        "backgroundColor": "#25292e",
+        "dark": {
+          "resizeMode": "cover",
+          "backgroundColor": "#000000"
+        }
+      }
+    },
+    "plugins": [
+      "expo-asset",
+      "expo-font"
+    ]
   },
   "name": "noovies"
 }
