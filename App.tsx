@@ -1,18 +1,20 @@
-import React, { useCallback, useEffect, useState } from "react";
-import * as SplashScreen from "expo-splash-screen";
-import Tabs from "./navigation/Tabs";
+import React from "react";
 import { useColorScheme } from "react-native";
-import {
-  NavigationContainer,
-  DarkTheme,
-  DefaultTheme,
-} from "@react-navigation/native";
-
+import { NavigationContainer } from "@react-navigation/native";
+import Root from "./navigation/Root";
+import { ThemeProvider } from "styled-components/native";
+import { darkTheme, lightTheme } from "./styled";
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
 export default function App() {
   const isDark = useColorScheme() === "dark";
   return (
-    <NavigationContainer>
-      <Tabs />
-    </NavigationContainer>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <NavigationContainer>
+          <Root />
+        </NavigationContainer>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }

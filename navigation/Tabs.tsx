@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import Movie from "../screens/Movie";
+import Movie from "../screens/Movies";
 import Tv from "../screens/Tv";
 import Search from "../screens/Search";
 import { Text, View, useColorScheme } from "react-native";
@@ -16,11 +16,14 @@ import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
-function Tabs() {
+const Tabs = () => {
   const isDark = useColorScheme() === "dark";
-  console.log(isDark);
+
   return (
     <Tab.Navigator
+      sceneContainerStyle={{
+        backgroundColor: isDark ? BLACK_COLOR : "white",
+      }}
       screenOptions={{
         tabBarStyle: {
           backgroundColor: isDark ? BLACK_COLOR : WHITE_COLOR,
@@ -41,7 +44,11 @@ function Tabs() {
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return (
-              <Ionicons name="film-sharp" color={color} size={size}></Ionicons>
+              <Ionicons
+                name="film-outline"
+                color={color}
+                size={size}
+              ></Ionicons>
             );
           },
         }}
@@ -51,7 +58,9 @@ function Tabs() {
         component={Tv}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
-            return <Ionicons name="tv" color={color} size={size}></Ionicons>;
+            return (
+              <Ionicons name="tv-outline" color={color} size={size}></Ionicons>
+            );
           },
         }}
       ></Tab.Screen>
@@ -68,6 +77,6 @@ function Tabs() {
       ></Tab.Screen>
     </Tab.Navigator>
   );
-}
+};
 
 export default Tabs;
